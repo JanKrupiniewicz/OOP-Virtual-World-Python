@@ -28,7 +28,9 @@ class Swiat:
         print("." + "-" * self.sizeX + ".")
 
     def ustawOrganizm(self, org):
-        x, y = org.getWsp()
+        m_wsp = org.getWsp()
+        x = m_wsp.x
+        y = m_wsp.y
         if self.tablicaOrganizmow[y][x] is None:
             self.tablicaOrganizmow[y][x] = org
         self.organizmy.append(org)

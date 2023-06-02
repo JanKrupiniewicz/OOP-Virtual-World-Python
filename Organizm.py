@@ -5,7 +5,7 @@ from Wsp import Wsp
 
 class Organizm:
     def __init__(self, mojaGra, sila, inicjatywa, x, y, wiek, nowo_narodzony):
-        self.wsp_o = (x, y)
+        self.wsp_o = Wsp(x, y)
         self.mojaGra = mojaGra
         self.sila = sila
         self.inicjatywa = inicjatywa
@@ -20,7 +20,7 @@ class Organizm:
         n_wsp = None
 
         while not n_wsp or niepoprawny_ruch:
-            n_wsp = Wsp(self.wsp_o[0], self.wsp_o[1])
+            n_wsp = Wsp(self.wsp_o.y, self.wsp_o.x)
             rand_kierunek = random.randint(0, 3)
             if rand_kierunek == 0:
                 n_wsp.y -= 1
@@ -41,24 +41,24 @@ class Organizm:
     def wspDoRozmnazania(self):
         wsp_n = self.wsp_o
 
-        if wsp_n[0] != 0 and self.mojaGra.getOrganizm(wsp_n[1], wsp_n[0] - 1) is None:
-            wsp_n = (wsp_n[0] - 1, wsp_n[1])
+        if wsp_n.x != 0 and self.mojaGra.getOrganizm(wsp_n.y, wsp_n.x - 1) is None:
+            wsp_n = (wsp_n.x - 1, wsp_n.y)
             return wsp_n
-        elif wsp_n[0] != self.mojaGra.getSizeX() - 1 and self.mojaGra.getOrganizm(wsp_n[1], wsp_n[0] + 1) is None:
-            wsp_n = (wsp_n[0] + 1, wsp_n[1])
+        elif wsp_n.x != self.mojaGra.getSizeX() - 1 and self.mojaGra.getOrganizm(wsp_n.y, wsp_n.x + 1) is None:
+            wsp_n = (wsp_n.x + 1, wsp_n.y)
             return wsp_n
-        elif wsp_n[1] != 0 and self.mojaGra.getOrganizm(wsp_n[1] - 1, wsp_n[0]) is None:
-            wsp_n = (wsp_n[0], wsp_n[1] - 1)
+        elif wsp_n.y != 0 and self.mojaGra.getOrganizm(wsp_n.y - 1, wsp_n.x) is None:
+            wsp_n = (wsp_n.x, wsp_n.y - 1)
             return wsp_n
-        elif wsp_n[1] != self.mojaGra.getSizeY() - 1 and self.mojaGra.getOrganizm(wsp_n[1] + 1, wsp_n[0]) is None:
-            wsp_n = (wsp_n[0], wsp_n[1] + 1)
+        elif wsp_n.y != self.mojaGra.getSizeY() - 1 and self.mojaGra.getOrganizm(wsp_n.y + 1, wsp_n.x) is None:
+            wsp_n = (wsp_n.x, wsp_n.y + 1)
             return wsp_n
         else:
             wsp_n = (-1, -1)
             return wsp_n
 
     def setWsp(self, x, y):
-        self.wsp_o = (x, y)
+        self.wsp_o = Wsp(x, y)
 
     def getWsp(self):
         return self.wsp_o
