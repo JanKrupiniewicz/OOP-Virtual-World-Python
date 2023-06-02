@@ -1,5 +1,8 @@
 from Swiat import Swiat
 
+
+# hello world
+
 print("       OOP 2023")
 print("s193320 Jan Krupiniewicz")
 print("   S Y M U L A T O R ")
